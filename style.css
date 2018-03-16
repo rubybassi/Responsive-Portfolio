@@ -1,3 +1,6 @@
+
+/* MOBILE FIRST APPROACH ATTEMPTED */
+
 * {
 	margin: 0;
 	padding: 0;
@@ -5,11 +8,9 @@
 
 html, body {
 	width: 100%;
-	min-width: 300px;
 	text-align: center;
 	font-family: "Open Sans", sans-serif;
 	height: 100%;
-	font-size: 2vh;
 }
 
 img {
@@ -18,23 +19,27 @@ img {
 }
 
 p {
-	font-size: 0.80em;
+	font-size: 1.2em;
 	color: #fff;
 	padding: 10px;
-	border: solid 1px white;
-	margin-bottom: 20px;
+	border: solid 1px #fff;
+	margin-bottom: 10px;
 }
 
 a {
 	text-decoration: none;
 }
 
-/*-------MAIN------ */
+.box a p:hover {
+	background: #faa165;
+}
+
+/*-------MAIN GRID------ */
 
 .main-grid {
 	display: grid;
 	grid-template-columns: repeat (4, 1fr);
-	grid-template-rows: repeat (minmax(100px, auto)6, 1fr);
+	grid-template-rows: 6, 1fr;
 	grid-template-areas: 
 	"header header header header"
 	"nav nav nav nav"
@@ -45,6 +50,7 @@ a {
 }
 
  /*-------LOGO------ */
+
 header {
 	grid-area: header;
 	background: linear-gradient(to bottom, #faa165,#f05c98);
@@ -55,6 +61,7 @@ header > img {
 }
 
  /*-------NAV------ */
+
 nav  {
 	grid-area: nav;
 	background: #f05c98;
@@ -67,48 +74,50 @@ nav > h1, h2 {
 }
 
 nav > h1 {
-	font-size: 1.2em;
+	font-size: 1.5em;
 	line-height: 5px;
 }
 
 nav > h2 {
-	font-size: 1.0em;
+	font-size: 1.1em;
 	padding-bottom: 20px;
 }
 
  /*-------HERO IMAGE------ */
+
 .hero-image {
 	width: 100%;
 	grid-area: hero;
-	background-image: url(img/code.png);
+	background-image: url(img/codesmall.png);
 	background-size: cover;
 	background-repeat: no-repeat;
 	display: grid;
-	grid-template-columns: 1fr;
-	grid-auto-rows: 80px;
+	grid-template-columns: 1fr auto;
+	grid-auto-rows: 85px;
 }
 
 .hero-image > h1 {
 	color: #fff;
 	font-family: "Bevan", serif;
-	font-size: 1.6em;
+	font-size: 2.5em;
 	grid-column: 1;
 	grid-row: 1/6;
 	align-self: center;
 	padding: 0 10px;
-	
-
 }
+
 /*-------card four------ */
+
 article {
 	grid-area: art;
-	padding: 20px;
+	padding: 2em;
 	font-size: 0.65em;
 	background: #011126;
 	color: #fff;
 }
 
-/*-------MAIN------ */
+/*-------MAIN CONTENT------ */
+
 main {
 	grid-area: main;
 	display: grid;
@@ -175,11 +184,33 @@ footer p {
 }
 
 
+/* MEDIA QUERIES FOR APPLE IPAD */
 
 
-
- /* MEDIA QUERIES FOR APPLE IPAD */
 @media screen and (min-width: 768px){	
+	
+	nav > h1 {
+		font-size: 1.8em;
+		line-height: 5px;
+	}
+
+	nav > h2 {
+		font-size: 1.4em;
+		padding-bottom: 20px;
+	}
+	
+	.hero-image {
+		background-image: url(img/code.png);
+		background-size: cover;
+		background-repeat: no-repeat;
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-auto-rows: 225px;
+	}
+	
+	.hero-image > h1 {
+		font-size: 3.5em;
+	}
 	
 	.main-grid {
 		grid-template-areas: 
@@ -188,6 +219,10 @@ footer p {
 			"art art art art"
 			"main main main main"
 			"footer footer footer footer";
+	}
+	article {
+		font-size: 1em;
+		padding: 5px 0;
 	}
 	
 	main {
@@ -213,7 +248,7 @@ footer p {
 	}
 
 	.section-3 {
-		grid-column: 3/6;
+		grid-column: 1/4;
 		grid-row: 2/3;
 	}
 
@@ -224,7 +259,8 @@ footer p {
 	nav > h1 {
 		margin: 20px 30px 0;
 		text-align: right;
-}
+	}
+	
 	nav > h2 {
 		margin: 0 30px 0;
 		padding: 10px 0 0;
@@ -234,24 +270,29 @@ footer p {
 	header + nav {
 		background: linear-gradient(to bottom, #faa165,#f05c98);
 	}
+	
 	header > img {
-	width: 150px;
+		width: 150px;
+	}
+	
+	footer p {
+		font-size: 1.2em;
+	}
 }
 
 	
-
 /*MEDIA QUERIES FOR DESKTOP*/ 
+
+
 @media screen and (min-width: 1024px) {	
 
 	body {
 		background: linear-gradient(to bottom, #faa165, #f05c98);
 	}	
+	
 	.main-grid {
 		max-width: 1300px;
 		margin: 0 auto;
-		grid-template-columns: repeat (4, 1fr);
-		grid-template-rows: repeat (5, 1fr);
-		grid-auto-rows: minmax(108px, auto);
 		grid-template-areas: 
 			"header nav nav nav"
 			"hero hero hero hero"
@@ -272,6 +313,7 @@ footer p {
 	section > div {
 		width: 80%;
 		margin: 0 auto;
+		height: 400px;
 	}
 	
 	.section-1 {
@@ -288,5 +330,19 @@ footer p {
 	.section-3 {
 		grid-column: 5/7;
 		grid-row: 1/2;
-	}		
+	}	
+	
+	nav {
+		padding-top: 10px;	
+	}
+	
+	article h1 {
+		text-align: left;
+		padding-left: 30px;
+	}
+	
+	.hero-image > h1 {
+		text-align: right;
+		padding-right: 30px;
+	}
 }
